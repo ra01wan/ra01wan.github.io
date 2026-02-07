@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Полины</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="music" preload="auto" autoplay muted playsinline loop>
+<source src="aud/experience.mp3" type="audio/mpeg">
+</audio>
+
+
+<div id="app">
+
+<!-- СЦЕНА 1 -->
+<section class="scene active">
+<p class="soft">
+Доброе утро, Полина.<br>
+Сегодня твой день —<br>
+и он особенный для меня так же, как и ты.
+</p>
+
+</section>
+
+<!-- СЦЕНА 2 -->
+<section class="scene hearts-photos">
+<div class="hearts-grid">
+<div class="photo-heart" style="background-image:url('img/1.jpg')"></div>
+<div class="photo-heart" style="background-image:url('img/2.jpg')"></div>
+<div class="photo-heart" style="background-image:url('img/3.jpg')"></div>
+<div class="photo-heart" style="background-image:url('img/4.jpg')"></div>
+</div>
+<p class="soft">
+Некоторые моменты<br>
+остаются в сердце<br>
+дольше слов.
+</p>
+</section>
+
+<!-- СЦЕНА 3 -->
+<section class="scene map-scene">
+<svg viewBox="0 0 600 300" class="map-svg">
+
+<image href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+width="600" height="300" opacity="0.15"/>
+
+<circle cx="170" cy="85" r="6" class="city-dot"/>
+<text x="180" y="80" class="map-label">Санкт-Петербург</text>
+
+<circle cx="430" cy="220" r="6" class="city-dot"/>
+<text x="440" y="215" class="map-label">Маскат</text>
+
+<line x1="170" y1="85" x2="430" y2="220" class="distance-line"/>
+
+</svg>
+
+<p class="soft small">
+Уже прошло пятнадцать дней с тех пор, как ты в Омане.<br>
+И кажется, что расстояние стало<br>
+не паузой — а чем-то важным.
+</p>
+
+<p class="distance-text">≈ 4 800 км</p>
+</section>
+
+<!-- СЦЕНА 4 -->
+<section class="scene">
+<p class="soft">
+Я хочу пожелать тебе любви, гармонии<br>
+и спокойствия в сердце.<br><br>
+Ты заслуживаешь этого<br>
+больше, чем думаешь.
+</p>
+</section>
+
+<!-- СЦЕНА 5 — полусердца -->
+<section class="scene hug-scene">
+  <div class="hearts-container">
+    <div class="half-heart pink"></div>
+    <div class="half-heart blue"></div>
+    <div class="full-heart"></div>
+  </div>
+
+  <p class="soft small">
+    Даже когда ты далеко —<br>
+    знай: ты не одна.<br><br>
+    Я рядом.
+  </p>
+</section>
+
+
+<!-- СЦЕНА 6 -->
+<section class="scene final">
+<p class="soft">
+Береги себя, моя хорошая.
+</p>
+</section>
+
+</div>
+
+<button id="nextBtn">Продолжить</button>
+
+<script src="script.js"></script>
+</body>
+</html>
