@@ -1,30 +1,30 @@
 *{box-sizing:border-box}
 
 body{
-margin:0;
-height:100vh;
-background:radial-gradient(circle at top,#4a1733,#12000b);
-color:#f6eaea;
-font-family:'Georgia',serif;
-display:flex;
-flex-direction:column;
-align-items:center;
+  margin:0;
+  height:100vh;
+  background:radial-gradient(circle at top,#4a1733,#12000b);
+  color:#f6eaea;
+  font-family:'Georgia',serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 #app{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .scene{
-position:absolute;
-opacity:0;
-transition:opacity 1.2s ease;
-text-align:center;
-padding:24px;
-max-width:90%;
+  position:absolute;
+  opacity:0;
+  transition:opacity 1.2s ease;
+  text-align:center;
+  padding:24px;
+  max-width:90%;
 }
 
 .scene.active{opacity:1}
@@ -33,14 +33,44 @@ max-width:90%;
 .small{font-size:14px;opacity:.75}
 
 button{
-margin-bottom:28px;
-padding:14px 32px;
-border-radius:40px;
-border:none;
-background:linear-gradient(135deg,#d89ab3,#f0c1d1);
-color:#12000b;
-font-size:16px;
-cursor:pointer;
+  margin-bottom:28px;
+  padding:14px 32px;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(135deg,#d89ab3,#f0c1d1);
+  color:#12000b;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* фото-сердца */
+.hearts-grid{
+  display:grid;
+  grid-template-columns:repeat(2,120px);
+  gap:20px
+}
+.photo-heart{
+  width:120px;
+  height:120px;
+  background-size:cover;
+  background-position:center;
+  clip-path:polygon(
+    50% 15%,61% 3%,80% 3%,95% 18%,
+    95% 40%,50% 85%,5% 40%,5% 18%,
+    20% 3%,39% 3%);
+  opacity:0;
+  transform:scale(.85);
+  animation:appear 1.2s forwards,pulse 4s infinite
+}
+.photo-heart:nth-child(1){animation-delay:.3s}
+.photo-heart:nth-child(2){animation-delay:.8s}
+.photo-heart:nth-child(3){animation-delay:1.3s}
+.photo-heart:nth-child(4){animation-delay:1.8s}
+
+@keyframes appear{to{opacity:1;transform:scale(1)}}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
 }
 
 /* карта */
@@ -48,22 +78,83 @@ cursor:pointer;
 .city-dot{fill:#ff9db8}
 .map-label{fill:#ffd6e0;font-size:12px;opacity:.8}
 .distance-line{
-stroke:#ffb6c9;
-stroke-width:1.5;
-stroke-dasharray:400;
-stroke-dashoffset:400;
+  stroke:#ffb6c9;
+  stroke-width:2;
+  stroke-dasharray:10 10;
+  stroke-dashoffset:20;
+  animation:none;
 }
 .map-scene.active .distance-line{
-animation:drawLine 2.5s forwards
+  animation:dashLine 2.5s linear forwards;
 }
-@keyframes drawLine{to{stroke-dashoffset:0}}
-
-.half-heart {
-  width: 50px;
-  height: 50px;
-  background-color: red;
-  position: relative;
-  transform: rotate(-45deg); /* Поворот для формы сердца */
-  margin: 50px;
+@keyframes dashLine{
+  to{stroke-dashoffset:0}
 }
 
+/* сердце */
+.hug-heart{
+  width:220px;
+  overflow:visible;
+  margin-bottom:20px;
+  z-index:2;
+}
+
+.heart-wrapper{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.heart{
+  transform-origin:center;
+  transition:1.8s ease-out;
+}
+
+/* стартовые позиции */
+.left{transform:translateX(-220px); filter:drop-shadow(0 0 12px rgba(255,110,160,.7))}
+.right{transform:translateX(220px); filter:drop-shadow(0 0 12px rgba(120,180,255,.7))}
+
+.hug-scene.merge .left{transform:translateX(-5px);}
+.hug-scene.merge .right{transform:translateX(-10px);}
+
+.heart-flash{
+  position:absolute;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff,#ff9bc0,transparent);
+  opacity:0;
+  z-index:1;
+}
+
+.hug-scene.merge .heart-flash{
+  animation:flash 1.2s ease forwards;
+}
+
+@keyframes flash{
+  0%{opacity:0;transform:scale(.2)}
+  40%{opacity:1;transform:scale(3)}
+  100%{opacity:.6;transform:scale(2)}
+}
+
+/* общий свет после соединения */
+.hug-scene.merge .hug-heart{
+  filter:drop-shadow(0 0 28px rgba(255,150,190,.9));
+}
+
+/* текст появляется сразу */
+.hug-text{opacity:1; transition:opacity 1s ease;}
+
+/* кнопка на сцене 5 */
+#hugBtn{
+  display:block;
+  margin:20px auto 0 auto;
+  padding:10px 24px;
+  font-size:16px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,#d89ab3,#f0c1d1);
+}
