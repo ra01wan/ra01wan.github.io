@@ -1,5 +1,4 @@
 *{box-sizing:border-box}
-
 body{
   margin:0;
   height:100vh;
@@ -46,12 +45,12 @@ button{
 /* фото-сердца */
 .hearts-grid{
   display:grid;
-  grid-template-columns:repeat(2,120px);
-  gap:20px
+  grid-template-columns:repeat(2,150px);
+  gap:20px;
 }
 .photo-heart{
-  width:120px;
-  height:120px;
+  width:150px;
+  height:150px;
   background-size:cover;
   background-position:center;
   clip-path:polygon(
@@ -82,7 +81,6 @@ button{
   stroke-width:2;
   stroke-dasharray:10 10;
   stroke-dashoffset:20;
-  animation:none;
 }
 .map-scene.active .distance-line{
   animation:dashLine 2.5s linear forwards;
@@ -91,14 +89,13 @@ button{
   to{stroke-dashoffset:0}
 }
 
-/* сердце */
+/* сердца сцена 5 */
 .hug-heart{
   width:220px;
   overflow:visible;
   margin-bottom:20px;
   z-index:2;
 }
-
 .heart-wrapper{
   position:relative;
   display:flex;
@@ -106,48 +103,46 @@ button{
   align-items:center;
   margin-bottom:20px;
 }
-
 .heart{
   transform-origin:center;
   transition:1.8s ease-out;
 }
 
 /* стартовые позиции */
-.left{transform:translateX(-220px); filter:drop-shadow(0 0 12px rgba(255,110,160,.7))}
-.right{transform:translateX(220px); filter:drop-shadow(0 0 12px rgba(120,180,255,.7))}
+.left{transform:translateX(-220px); filter:drop-shadow(0 0 12px rgba(255,110,160,.7)); animation:pinkGlow 2.5s infinite alternate;}
+.right{transform:translateX(220px); filter:drop-shadow(0 0 12px rgba(120,180,255,.7)); animation:blueGlow 2.5s infinite alternate;}
 
-.hug-scene.merge .left{transform:translateX(-5px);}
-.hug-scene.merge .right{transform:translateX(-10px);}
-
-.heart-flash{
-  position:absolute;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:radial-gradient(circle,#fff,#ff9bc0,transparent);
-  opacity:0;
-  z-index:1;
+@keyframes pinkGlow{
+  0%{filter:drop-shadow(0 0 8px rgba(255,110,160,.5))}
+  100%{filter:drop-shadow(0 0 18px rgba(255,110,160,.9))}
+}
+@keyframes blueGlow{
+  0%{filter:drop-shadow(0 0 8px rgba(120,180,255,.5))}
+  100%{filter:drop-shadow(0 0 18px rgba(120,180,255,.9))}
 }
 
+.hug-scene.merge .left{transform:translateX(-5px); animation:none;}
+.hug-scene.merge .right{transform:translateX(-10px); animation:none;}
+
+/* вспышка при соединении */
 .hug-scene.merge .heart-flash{
   animation:flash 1.2s ease forwards;
 }
-
 @keyframes flash{
   0%{opacity:0;transform:scale(.2)}
   40%{opacity:1;transform:scale(3)}
   100%{opacity:.6;transform:scale(2)}
 }
 
-/* общий свет после соединения */
+/* общий свет */
 .hug-scene.merge .hug-heart{
   filter:drop-shadow(0 0 28px rgba(255,150,190,.9));
 }
 
-/* текст появляется сразу */
+/* текст */
 .hug-text{opacity:1; transition:opacity 1s ease;}
 
-/* кнопка на сцене 5 */
+/* кнопка сцена 5 */
 #hugBtn{
   display:block;
   margin:20px auto 0 auto;
