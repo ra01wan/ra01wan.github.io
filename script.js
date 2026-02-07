@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-const texts = ["Начать","Продолжить","Я помню","Посмотреть дальше","Я рядом",""];
+const texts = ["Начать","Продолжить","Я помню","Посмотреть дальше","❤️",""];
 
 btn.addEventListener('click', () => {
   scenes[i].classList.remove('active');
@@ -46,3 +46,4 @@ hugBtn.addEventListener('click', () => {
     btn.style.display = "none";
   }, 8500);
 });
+
